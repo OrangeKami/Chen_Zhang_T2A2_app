@@ -48,6 +48,10 @@ gem 'file_validators'
 
 gem 'jquery-rails'
 
+gem 'bootstrap'
+
+gem 'popper'
+
 # gem 'inline_svg'
 
 # gem 'imgproxy'

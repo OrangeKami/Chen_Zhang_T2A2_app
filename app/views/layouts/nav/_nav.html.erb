@@ -1,0 +1,35 @@
+<div class="container-fluid" style="width: 85%;">
+  <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+    <a class="navbar-brand fs-4 fw-light"  style="color: black;" href="/">
+        <img src="/assets/icon2.jpg" alt="" width="45" height="45">
+        BONTICA MARKET
+    </a>
+
+    <ul class="nav col-12 col-lg-auto ms-lg-auto justify-content-center mb-md-0">
+      <li><a href="#" class="nav-link px-2 link-dark">Plants</a></li>
+      <li><a href="#" class="nav-link px-2 link-dark">Pots</a></li>
+      <li><a href="#" class="nav-link px-2 link-dark">Accessories</a></li>
+    
+      <div class="dropdown text-end pt-1">
+        <a class="d-block link-dark text-decoration-none dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
+          <% if current_user.avatar.present? %>
+            <%= image_tag(current_user.avatar.variant(resize_to_fill: [40, 40]), class: "rounded-circle") %>
+          <% else %>
+            <img alt="image" class="rounded-circle" src="/assets/default_avatar.jpg" width="32" height="32"  >
+          <% end %>
+        </a>
+        <ul class="dropdown-menu text-small" style="">
+          <% if !current_user %>
+            <li class="dropdown-item"> <%= link_to "Sing Up", new_user_registration_path %></li>
+            <li class="dropdown-item"> <%= link_to "Sing In", new_user_session_path %></li>
+          <% else %>
+            <li class="dropdown-item"><%= link_to "My Profile", edit_user_registration_path %></li>
+            <li class="dropdown-item"><hr class="dropdown-divider"></li>
+            <li class="dropdown-item"><%= button_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+          <% end %>
+        </ul>
+      </div>
+    </ul>
+    
+  </div>
+</div>
