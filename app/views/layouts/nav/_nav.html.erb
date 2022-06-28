@@ -12,16 +12,16 @@
     
       <div class="dropdown text-end pt-1">
         <a class="d-block link-dark text-decoration-none dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
-          <% if current_user.avatar.present? %>
+          <% if user_signed_in? %>
             <%= image_tag(current_user.avatar.variant(resize_to_fill: [40, 40]), class: "rounded-circle") %>
           <% else %>
             <img alt="image" class="rounded-circle" src="/assets/default_avatar.jpg" width="32" height="32"  >
-          <% end %>
+          <% end %> 
         </a>
         <ul class="dropdown-menu text-small" style="">
           <% if !current_user %>
-            <li class="dropdown-item"> <%= link_to "Sing Up", new_user_registration_path %></li>
-            <li class="dropdown-item"> <%= link_to "Sing In", new_user_session_path %></li>
+            <li class="dropdown-item"> <%= link_to "Sign Up", new_user_registration_path %></li>
+            <li class="dropdown-item"> <%= link_to "Sign In", new_user_session_path %></li>
           <% else %>
             <li class="dropdown-item"><%= link_to "My Profile", edit_user_registration_path %></li>
             <li class="dropdown-item"><hr class="dropdown-divider"></li>
