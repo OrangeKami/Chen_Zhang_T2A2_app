@@ -1,5 +1,35 @@
 <h2>Log in</h2>
 
+<div class="inner">
+<div class="image-holder">
+<img src="/assets/icon2.jpg" alt="">
+</div>
+<form action="">
+<h3>Sign Up</h3>
+<div class="form-holder active">
+<input type="text" placeholder="name" class="form-control">
+</div>
+<div class="form-holder">
+<input type="text" placeholder="e-mail" class="form-control">
+</div>
+<div class="form-holder">
+<input type="password" placeholder="Password" class="form-control" style="font-size: 15px;">
+</div>
+<div class="checkbox">
+<label>
+<input type="checkbox" checked=""> I agree all statement in <a href="#">Terms &amp; Conditions</a>
+<span class="checkmark"></span>
+</label>
+</div>
+<div class="form-login">
+<button>Sign up</button>
+<p>Already Have account? <a href="#">Login</a></p>
+</div>
+</form>
+</div>
+
+
+
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
