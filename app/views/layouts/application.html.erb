@@ -18,13 +18,16 @@
     <header>
       <%= render "layouts/nav/nav" %>
     </header>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-    <div class="container-fluid" style="width: 85%;">
+    
+    <p class="notice"><%= notice %></p>
+      
+    <p class="alert"><%= alert %></p>
+    
+    <div class="content">
       <%= yield %>
     </div>
-    <footer>
+    
     <%= render "layouts/nav/footer"%>
-    </footer>
+   
   </body>
 </html>

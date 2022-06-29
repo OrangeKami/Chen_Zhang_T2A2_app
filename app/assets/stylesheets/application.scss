@@ -14,55 +14,19 @@
  *= require_self
  */
 // Custom bootstrap variables must be set or imported *before* bootstrap.
+
+
 @import "bootstrap";
 
 
-.inner {
-    max-width: 850px;
-    margin: auto;
-    background: #fff;
-    display: flex;
-    box-shadow: 0px 0px 10px 0px RGB(0 0 0 / 20%);
-    -webkit-box-shadow: 0px 0px 10px 0px RGB(0 0 0 / 20%);
-    -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-    -ms-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-    -o-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-}
-
-.image-holder {
-    width: 50%;
-    padding-right: 15px;
-}
 
 
-form {
-    width: 50%;
-    padding-top: 77px;
-    padding-right: 60px;
-    padding-left: 15px;
-}
 
 
-* {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-}
+.content {
+     min-height: calc(85vh - 110px);
+ }
 
-@media (max-width: 768px) {
-
-form {
-    width: 100%;
-    padding: 0px 15px 70px;
-}
-
-.inner {
-    display: block;
-}
-
-.image-holder {
-    width: 100%;
-    padding-right: 0;
-}
-
-}
+ body {
+     font-family: 'Poppins';
+ }
