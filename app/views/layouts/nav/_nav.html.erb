@@ -13,7 +13,8 @@
       <div class="dropdown text-end pt-1">
         <a class="d-block link-dark text-decoration-none dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
           <% if user_signed_in? %>
-            <%= image_tag(current_user.avatar.variant(resize_to_fill: [40, 40]), class: "rounded-circle") %>
+            <%= image_tag(current_user.avatar, class: "rounded-circle", style: "width: 40px; height: 40px") %> 
+            <%# variant does not work, fix later %>
           <% else %>
             <img alt="image" class="rounded-circle" src="/assets/default_avatar.jpg" width="32" height="32"  >
           <% end %> 
