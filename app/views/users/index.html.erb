@@ -22,8 +22,11 @@ function alert() {
             <div class="col-md-3">
                 <b>User Name</b>
             </div>
-            <div class="col-md-1">
+            <div class="col-md-3">
                 <b>Avatar</b>
+            </div>
+            <div class="col-md-3 text-center">
+                <b>Buttom</b>
             </div>
         </div>
     </li>
@@ -38,14 +41,14 @@ function alert() {
                 <%= user.username %>
             </div>
             
-            <div class="col-md-5">
+            <div class="col-md-3">
                  <% if user.avatar.persisted? %>
                  <%= image_tag(user.avatar, size: "40x40") %> 
                  <% end %>  
             </div>
-            <div class="col-md-5">
+            <div class="col-md-3 text-center">
             <% if !user.admin? %>
-                <%= button_to "Cancel my account", user_path(user),  data: {turbo_confirm: 'Are you sure?'}, method: :delete %>
+                <%= button_to "Delete User", user_path(user),  data: {turbo_confirm: 'Are you sure?'}, method: :delete, class: "btn btn-danger" %>
             <% end %>
             </div>
         </div>
