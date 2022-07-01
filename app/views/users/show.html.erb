@@ -1,0 +1,10 @@
+<% if @user.avatar.persisted? %>
+
+<%= image_tag(@user.avatar, size: "40x40") %> 
+<% else %>
+<img alt="image" class="rounded-circle" src="/assets/default_avatar.jpg" width="40" height="40"  >
+<% end %>
+<h1><%= @user.username %></h1>
+<h5><%= @user.email %></h5>
+
+<%= link_to "Edit My Profile",  edit_user_registration_path(@user) %>

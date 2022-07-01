@@ -1,0 +1,55 @@
+<style>
+.button_to {
+    display: inline;
+}
+.evenrow {
+    background-color: #eee;
+}
+</style>
+<script type="text/javascript">
+function alert() {
+    alert("The paragraph was clicked.");
+}
+</script>
+<h1>All Users</h1>
+
+<ul class="list-group" style="padding: 0em 10% 0em 10%;">
+    <li class="list-group-item" style="background-color: #428bca; border-color: #357ebd;; color: #fff;">
+        <div class="row">
+            <div class="col-md-3">
+                <b>User Email</b>
+            </div>
+            <div class="col-md-3">
+                <b>User Name</b>
+            </div>
+            <div class="col-md-1">
+                <b>Avatar</b>
+            </div>
+            <div class="col-md-5">
+                <b>Controls</b>
+            </div>
+        </div>
+    </li>
+    <%@users = User.all%>
+    <% @users.each do |user| %>
+    <li class="list-group-item">
+        <div class="row">
+            <div class="col-md-3">
+                <%= user.email %>
+            </div>
+            <div class="col-md-3">
+                <%= user.username %>
+            </div>
+            
+            <div class="col-md-5">
+                 <% if user.avatar.persisted? %>
+                 <%= image_tag(user.avatar, size: "40x40") %> 
+                 <% end %>  
+            </div>
+            <div class="col-md-5">
+                <%= button_to "Cancel my account", user_path(user),  data: {turbo_confirm: 'Are you sure?'}, method: :delete %>
+            </div>
+        </div>
+    </li>
+    <% end %>
+</ul>

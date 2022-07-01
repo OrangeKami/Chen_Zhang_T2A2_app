@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { 
+  devise_for :users, :path_prefix => 'd', controllers: { 
     sessions: 'users/sessions',
     registrations: 'users/registrations'
    }
   root to: 'pages#home'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
+  match '/users', to: 'users#index', via: 'get'
+  match '/users/:id', to: 'users#show', via: 'get'
+  get 'users/:id/edit', to: 'users#edit', as: 'edit_user'
+  match '/users/:id/', to: 'users#destroy', via: 'delete'
+  patch 'users/:id', to: 'users#update'
+  resources :users
 end
