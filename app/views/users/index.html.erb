@@ -25,9 +25,6 @@ function alert() {
             <div class="col-md-1">
                 <b>Avatar</b>
             </div>
-            <div class="col-md-5">
-                <b>Controls</b>
-            </div>
         </div>
     </li>
     <%@users = User.all%>
@@ -47,7 +44,9 @@ function alert() {
                  <% end %>  
             </div>
             <div class="col-md-5">
+            <% if !user.admin? %>
                 <%= button_to "Cancel my account", user_path(user),  data: {turbo_confirm: 'Are you sure?'}, method: :delete %>
+            <% end %>
             </div>
         </div>
     </li>

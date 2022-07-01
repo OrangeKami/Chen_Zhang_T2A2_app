@@ -6,8 +6,7 @@ class UsersController < ApplicationController
     def show
      @user = User.find_by_id(params[:id])
     end
-
-    
+   
   def destroy
     @user = User.find(params[:id])
     @user.destroy
@@ -17,22 +16,6 @@ class UsersController < ApplicationController
     end
   end
 
-
-
-
-
-
-
-    
-
-  private
-    def set_user
-      @user = User.find(params[:id])
-    end
-
-    def user_params
-      params.require(:user).permit(:username, :email, :password, :avatar, :password_confirmation, :admin)
-    end
 end
 
 
