@@ -1,43 +1,44 @@
-<div class="container-fluid bg-light " style="width: 80%;">
-  <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-    <a class="navbar-brand fs-4 fw-light"  style="color: rgb(0, 77, 0);" href="/">
-        <img src="/assets/icon2.jpg" alt="" width="45" height="45">
-        <strong>BOTANIC MARKET</strong>
-    </a>
 
-    <ul class="nav col-12 col-lg-auto ms-lg-auto justify-content-center mb-md-0" style="color: rgb(0, 77, 0);">
-      <li><a href="#" class="nav-link px-2 link-dark" style="color: rgb(0, 77, 0);">Plants</a></li>
-      <li><a href="#" class="nav-link px-2 link-dark" style="color: rgb(0, 77, 0);">Pots</a></li>
-      <li><a href="#" class="nav-link px-2 link-dark" style="color: rgb(0, 77, 0);">Accessories</a></li>
-    
-      <div class="dropdown text-end pt-1">
-        <a class="d-block link-dark text-decoration-none dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
-          <% if user_signed_in? && current_user.avatar.persisted? %>
-            <%= image_tag(current_user.avatar, class: "rounded-circle", size: "40") %> 
-            <%# variant does not work, fix later %>
-          <% else %>
-            <img alt="image" class="rounded-circle" src="/assets/default_avatar.jpg" width="40" height="40"  >
-          <% end %> 
-        </a>
-        <ul class="dropdown-menu text-small" style="">
-          <% if !current_user %>
-            <a class="dropdown-item" href="<%= new_user_registration_path %>">Sign Up</a>
-            <a class="dropdown-item" href="<%= new_user_session_path  %>">Sign In</a>
-          <% else %>
-            <% if current_user.admin? %>
-              <p class="dropdown-item" style="font-weight: bold;">(This is Admin)</p>
-              <%= link_to "User Control", users_path, class: "dropdown-item"%>
+  <div class="container-fluid bg-light ">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a class="navbar-brand fs-4 fw-light"  style="color: rgb(0, 77, 0);" href="/">
+          <img src="/assets/icon2.jpg" alt="" width="45" height="45">
+          <strong>BOTANIC MARKET</strong>
+      </a>
+
+      <ul class="nav col-12 col-lg-auto ms-lg-auto justify-content-center mb-md-0" style="color: rgb(0, 77, 0);">
+        <li><a href="#" class="nav-link px-2 link-dark" style="color: rgb(0, 77, 0);">Plants</a></li>
+        <li><a href="#" class="nav-link px-2 link-dark" style="color: rgb(0, 77, 0);">Pots</a></li>
+        <li><a href="#" class="nav-link px-2 link-dark" style="color: rgb(0, 77, 0);">Accessories</a></li>
+      
+        <div class="dropdown text-end pt-1">
+          <a class="d-block link-dark text-decoration-none dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
+            <% if user_signed_in? && current_user.avatar.persisted? %>
+              <%= image_tag(current_user.avatar, class: "rounded-circle", size: "35") %> 
+              <%# variant does not work, fix later %>
+            <% else %>
+              <img alt="image" class="rounded-circle" src="/assets/default_avatar.jpg" width="35" height="35"  >
+            <% end %> 
+          </a>
+          <ul class="dropdown-menu text-small" style="">
+            <% if !current_user %>
+              <a class="dropdown-item" href="<%= new_user_registration_path %>">Sign Up</a>
+              <a class="dropdown-item" href="<%= new_user_session_path  %>">Sign In</a>
+            <% else %>
+              <% if current_user.admin? %>
+                <p class="dropdown-item" style="font-weight: bold;">(This is Admin)</p>
+                <%= link_to "User Control", users_path, class: "dropdown-item"%>
+              <% end %>
+              <%= link_to "My Profile", current_user, class: "dropdown-item"%>
+              <a class="dropdown-item" href="/">My Cart</a>
+              
+              
+              <li class="dropdown-item"><hr class="dropdown-divider"></li>
+              <a class="dropdown-item" href="<%= destroy_user_session_path  %>">Sign Out</a>
             <% end %>
-            <%= link_to "My Profile", current_user, class: "dropdown-item"%>
-            <a class="dropdown-item" href="/">My Cart</a>
-            
-            
-            <li class="dropdown-item"><hr class="dropdown-divider"></li>
-            <a class="dropdown-item" href="<%= destroy_user_session_path  %>">Sign Out</a>
-          <% end %>
-        </ul>
-      </div>
-    </ul>
-    
+          </ul>
+        </div>
+      </ul>
+      
+    </div>
   </div>
-</div>
