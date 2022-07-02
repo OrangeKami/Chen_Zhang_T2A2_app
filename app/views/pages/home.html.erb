@@ -7,7 +7,7 @@
       <%= form_tag users_path, method: :get do %>
         <div class="search-form-control form-group">
           <%= text_field_tag :query, params[:query], placeholder: 'Start your search...', class: 'form-control rounded-pill text-center' %>
-          <a href="#" class="btn btn-success my-2">Browse Market</a>
+          <a href="<%= listings_path%>"" class="btn btn-success my-2">Browse Market</a>
         </div>
       <% end %>
      </div>
