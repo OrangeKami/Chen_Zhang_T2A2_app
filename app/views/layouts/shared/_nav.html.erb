@@ -1,16 +1,12 @@
 
-  <div class="container-fluid bg-light ">
+  <div class="container-fluid bg-light fixed-top ">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       <a class="navbar-brand fs-4 fw-light"  style="color: rgb(0, 77, 0);" href="/">
           <img src="/assets/icon2.jpg" alt="" width="45" height="45">
           <strong>BOTANIC MARKET</strong>
       </a>
-      <%= form_tag users_path, method: :get do %>
-        <div class="search-form-control <%= 'd-none' if current_page?(root_path) %> ">
-          <%= text_field_tag :query, params[:query], placeholder: 'Start your search...', class: 'form-control rounded-pill text-center' %>
-        </div>
-      <% end %>
-
+      
+      
       <ul class="nav col-12 col-lg-auto ms-lg-auto justify-content-center mb-md-0" style="color: rgb(0, 77, 0);">
         <li><a href="#" class="nav-link px-2 link-dark" style="color: rgb(0, 77, 0);">Plants</a></li>
         <li><a href="#" class="nav-link px-2 link-dark" style="color: rgb(0, 77, 0);">Pots</a></li>

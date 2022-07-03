@@ -1,20 +1,43 @@
-<p style="color: green"><%= notice %></p>
+<div class="container" style="margin-top: 100px;">
 
-<h1>Listings</h1>
-
-<div id="listings">
-  <% @listings.each do |listing| %>
-    <%= render listing %>
-    <p>
-      <%= link_to "Show this listing", listing %>
-    </p>
-  <% end %>
+<div class="d-flex pt-3 pb-4 justify-content-center">
+  <div class="input-style">
+<%= form_tag listings_path, method: :get do %>
+  <%= text_field_tag :search,
+    params[:search],
+    class: "form-control input-style mt-1",
+    placeholder: "Find a plant"
+  %>
+  </div>
+  <div class="pl-2">
+  <%= submit_tag "Search", class: "mt-1 btn search-btn" %>
+<% end %>
+</div>
 </div>
 
-
-<div class="map-container">
-  <div id="map"></div>
-</div>
 
 
 <%= link_to "New listing", new_listing_path %>
+
+
+
+  <div class="listingcards listingcards-index">
+    <% @listings.each do |listing| %>
+    <%= link_to listing_path(listing) do %>
+    <div class="listingcard-trip">
+      <% if listing.photo.attached? %>
+        <%= image_tag(listing.photo) %>
+      <% else %>
+         <img alt="image"  src="/assets/plants.jpg" >
+      <% end %>
+      <div class="listingcard-trip-infos">
+        <div class="listingcard-text">
+          <h2> <%= listing.name %> </h2>
+          <p> <%= listing.description.to_plain_text.truncate(150) %> </p>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+</div>

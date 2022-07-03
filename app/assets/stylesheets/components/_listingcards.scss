@@ -1,0 +1,96 @@
+
+.listingcards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 21px;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .listingcards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .listingcards {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .listingcards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .listingcards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .listingcards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.listingcard-trip {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+.listingcard-trip>img {
+  height: 359px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.listingcard-trip h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.listingcard-trip p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.listingcard-trip .listingcard-trip-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  min-height: 110px;
+}
+
+.listingcard-trip-infos .listingcard-trip-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
+
+.listingcard-rounded {
+  border-radius: 10px;
+}
+
+.listingcard-rounded-img {
+  border-radius: 10px 10px 0px 0px;
+}
+
+.listingcard-trip:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
+}

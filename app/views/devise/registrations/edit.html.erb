@@ -19,9 +19,6 @@
       <%= f.label :email %>
       <%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: current_user.email %>
       <br>
-      <%= f.label :postcode %>
-      <%= f.text_field :postcode, autofocus: true, class: "form-control", placeholder: current_user.postcode %>
-      <br>
       <%= f.label :"Update your Avatar" %>
       <%= f.file_field :avatar, class: "form-control" %><br>
       

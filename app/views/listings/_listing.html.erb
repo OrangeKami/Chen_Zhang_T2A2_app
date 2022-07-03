@@ -9,9 +9,18 @@
     <%= listing.price %>
   </p>
 
+
+  <p>
+    <strong>Category:</strong>
+    <%= listing.category %>
+  </p>
   <p>
     <strong>Photo:</strong>
-    <%= listing.photo %>
+    <% if listing.photo.attached? %>
+        <%= image_tag(listing.photo size: "150" )  %>
+      <% else %>
+         <img alt="image" class="rounded-circle" src="/assets/plants.jpg" width="150" height="150">
+      <% end %>
   </p>
 
   <p>
