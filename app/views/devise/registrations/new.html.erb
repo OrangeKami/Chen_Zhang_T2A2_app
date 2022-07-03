@@ -7,13 +7,12 @@
 
     <%= f.text_field :username, autofocus: true, class: "form-control", placeholder: "Username" %>
     <%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "Email Address" %>
+    <%= f.text_field :postcode, autofocus: true, class: "form-control", placeholder: "Postcode" %>
     <%= f.password_field :password, autocomplete: "password", class: "form-control", placeholder: "Password (6 characters minimum)" %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Comfirm your Password" %>
     
     <%= f.label :"Upload your Avatar" %>
-    <div class="form-control"> 
-      <%= f.file_field :avatar %>
-    </div>
+    <%= f.file_field :avatar, class: "form-control" %>
     <br>
     <%= f.submit "Sign Up", class: "btn btn-success text-center" %> 
      <p class="mt-5 mb-3 text-muted">© 2022</p>

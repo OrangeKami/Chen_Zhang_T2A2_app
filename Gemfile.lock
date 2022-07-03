@@ -127,8 +127,7 @@ GEM
     file_validators (3.0.0)
       activemodel (>= 3.2)
       mime-types (>= 1.0)
-    font-awesome-sass (6.1.1)
-      sassc (~> 2.0)
+    geocoder (1.6.7)
     globalid (1.0.0)
       activesupport (>= 5.0)
     i18n (1.10.0)
@@ -136,9 +135,6 @@ GEM
     image_processing (1.12.2)
       mini_magick (>= 4.9.5, < 5)
       ruby-vips (>= 2.0.17, < 3)
-    importmap-rails (1.1.2)
-      actionpack (>= 6.0.0)
-      railties (>= 6.0.0)
     io-console (0.5.11)
     irb (1.4.1)
       reline (>= 0.3.0)
@@ -258,9 +254,6 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    simple_form (5.1.0)
-      actionpack (>= 5.2)
-      activemodel (>= 5.2)
     slack-notifier (2.4.0)
     sprockets (4.1.1)
       concurrent-ruby (~> 1.0)
@@ -316,9 +309,8 @@ DEPENDENCIES
   debug
   devise
   file_validators
-  font-awesome-sass
+  geocoder
   image_processing (~> 1.2)
-  importmap-rails
   jbuilder
   jquery-rails
   mini_magick
@@ -327,7 +319,6 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.3)
   selenium-webdriver
-  simple_form
   sprockets-rails
   stimulus-rails
   turbo-rails (~> 1.0)

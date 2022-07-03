@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
   before_action :set_listing, only: %i[ show edit update destroy ]
-
+  skip_before_action :authenticate_user!, only: [:index, :show], raise: false
   # GET /listings or /listings.json
   def index
     @listings = Listing.all
@@ -22,7 +22,8 @@ class ListingsController < ApplicationController
   # POST /listings or /listings.json
   def create
     @listing = Listing.new(listing_params)
-
+    @listing.user = current_user
+   
     respond_to do |format|
       if @listing.save
         format.html { redirect_to listing_url(@listing), notice: "Listing was successfully created." }
@@ -65,6 +66,6 @@ class ListingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def listing_params
-      params.require(:listing).permit(:name, :price, :photo, :description, :address, :latitude, :longitude)
+      params.require(:listing).permit(:name, :price, :photo, :description, :category)
     end
 end

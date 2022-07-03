@@ -1,0 +1,42 @@
+<div class="col-md-4 mb-3">
+  <div class="card">
+    <div class="card-body">
+      <div class="d-flex flex-column align-items-center text-center">
+        <% if @user.avatar.persisted? %>
+        <%= image_tag(@user.avatar, size: "150", class: "rounded-circle z-index-2 shadow") %> 
+        <% else %>
+        <img alt="image" class="rounded-circle z-index-2 shadow" src="/assets/default_avatar.jpg" size="150">
+        <% end %><br>
+
+        <h4><%= @user.username %></h4><br>
+        <article class="media">
+            <div class="media-content text-secondary mb-1">Since <strong><%= @user.created_at.strftime('%b %Y') %></strong></div>   
+        </article><br>
+          <div class="<%= 'd-none' if current_page?(edit_user_registration_path(@user)) %>" >
+          <%= link_to "Edit My Profile",  edit_user_registration_path(@user), class: "btn btn-success" %>
+          <button class="btn btn-outline-primary <%= 'd-none' if @user = current_user %>">Message</button>
+          </div>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="card mt-3">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+          <div class="col-6 ml-auto" id="map" style="position: sticky; height: 100vh; width: 550px " data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV["MAPBOX_API_KEY"] %>">
+          </div>  
+        </li>
+      </ul>
+  </div>
+</div> 
+
+
+
+  
+
+
+
+
+
+
+

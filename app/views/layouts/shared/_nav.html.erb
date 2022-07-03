@@ -5,6 +5,11 @@
           <img src="/assets/icon2.jpg" alt="" width="45" height="45">
           <strong>BOTANIC MARKET</strong>
       </a>
+      <%= form_tag users_path, method: :get do %>
+        <div class="search-form-control <%= 'd-none' if current_page?(root_path) %> ">
+          <%= text_field_tag :query, params[:query], placeholder: 'Start your search...', class: 'form-control rounded-pill text-center' %>
+        </div>
+      <% end %>
 
       <ul class="nav col-12 col-lg-auto ms-lg-auto justify-content-center mb-md-0" style="color: rgb(0, 77, 0);">
         <li><a href="#" class="nav-link px-2 link-dark" style="color: rgb(0, 77, 0);">Plants</a></li>
@@ -15,10 +20,12 @@
           <a class="d-block link-dark text-decoration-none dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
             <% if user_signed_in? && current_user.avatar.persisted? %>
               <%= image_tag(current_user.avatar, class: "rounded-circle", size: "35") %> 
+              <%= current_user.username %>
               <%# variant does not work, fix later %>
             <% else %>
               <img alt="image" class="rounded-circle" src="/assets/default_avatar.jpg" width="35" height="35"  >
             <% end %> 
+            
           </a>
           <ul class="dropdown-menu text-small" style="">
             <% if !current_user %>

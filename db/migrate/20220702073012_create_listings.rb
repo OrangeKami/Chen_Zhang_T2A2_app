@@ -5,9 +5,7 @@ class CreateListings < ActiveRecord::Migration[7.0]
       t.decimal :price
       t.string :photo
       t.text :description
-      t.string :address
-      t.float :latitude
-      t.float :longitude
+      t.string :category
 
       t.timestamps
     end

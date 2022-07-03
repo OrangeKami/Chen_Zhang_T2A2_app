@@ -1,10 +1,16 @@
-<% if @user.avatar.persisted? %>
+<section class="py-5 text-center container shadow">
+ <div class="row gutters-sm">
+    <%= render "layouts/shared/user_card" %>
+    
 
-<%= image_tag(@user.avatar, size: "40x40") %> 
-<% else %>
-<img alt="image" class="rounded-circle" src="/assets/default_avatar.jpg" width="40" height="40"  >
-<% end %>
-<h1><%= @user.username %></h1>
-<h5><%= @user.email %></h5>
 
-<%= link_to "Edit My Profile",  edit_user_registration_path(@user) %>
+
+    <div class="col-md-8">
+      <div class="card mb-3">
+        <div class="card-body">
+        
+        </div>
+      </div>
+    </div>
+  
+</section>

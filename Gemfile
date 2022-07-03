@@ -16,7 +16,7 @@ gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
 
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
+# gem "importmap-rails"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails", "~> 1.0"
@@ -53,9 +53,10 @@ gem 'bootstrap', '~> 5.1.3'
 gem 'popper'
 
 gem 'autoprefixer-rails', '10.2.5'
-gem 'font-awesome-sass'
-gem 'simple_form'
+# gem 'font-awesome-sass'
+# gem 'simple_form'
 
+gem 'geocoder'
 
 # gem 'inline_svg'
 
@@ -66,7 +67,9 @@ gem 'simple_form'
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.2"
+
 gem 'mini_magick'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
