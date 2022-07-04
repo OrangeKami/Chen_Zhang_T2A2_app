@@ -19,16 +19,14 @@
 @import "bootstrap";
 
 
-
-
-
-
-
-
 .content {
      min-height: calc(90vh);
  }
 
  body {
      font-family: 'Poppins';
+ }
+
+ a {
+     text-decoration: none !important;
  }
