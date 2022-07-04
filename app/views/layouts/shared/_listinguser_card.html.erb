@@ -1,0 +1,24 @@
+<div class="col-md-4 mb-3">
+  <div class="card">
+    <div class="card-body">
+      <div class="d-flex flex-column align-items-center text-center">
+        <% if @listing.user.avatar.persisted? %>
+        <%= image_tag(@listing.user.avatar, size: "150", class: "rounded-circle z-index-2 shadow") %> 
+        <% else %>
+        <img alt="image" class="rounded-circle z-index-2 shadow" src="/assets/default_avatar.jpg" width="150" height="150">
+        <% end %><br>
+
+        <h4><%= @listing.user.username %></h4><br>
+        <article class="media">
+            <div class="media-content text-secondary mb-1">Since <strong><%= @listing.user.created_at.strftime('%b %Y') %></strong></div>   
+        </article><br>
+          <% if @listing.user_id != current_user.id%>
+            <button class="btn btn-outline-primary">Message</button>
+          <% else %>
+            
+            <%= link_to "Edit My Profile", edit_user_registration_path(@user), class: "btn btn-success" %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div> 

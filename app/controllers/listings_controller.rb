@@ -1,6 +1,6 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: %i[ show edit update destroy ]
-  skip_before_action :authenticate_user!, only: [:index, :show], raise: false
+  before_action :set_listing, only: [ :show, :edit, :update, :destroy ]
+  skip_before_action :authenticate_user!, only: [:index]
   # GET /listings or /listings.json
   def index
     @listings = Listing.all

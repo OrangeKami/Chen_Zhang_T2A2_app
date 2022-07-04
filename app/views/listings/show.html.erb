@@ -1,10 +1,8 @@
-<p style="color: green"><%= notice %></p>
+<section class="py-5 text-center container shadow">
 
-<%= render @listing %>
 
-<div>
-  <%= link_to "Edit this listing", edit_listing_path(@listing) %> |
-  <%= link_to "Back to listings", listings_path %>
+    <p style="color: green"><%= notice %></p>
 
-  <%= button_to "Destroy this listing", @listing, method: :delete %>
-</div>
+    <%= render @listing %>
+
+</section>

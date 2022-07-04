@@ -1,33 +1,46 @@
-<div id="<%= dom_id listing %>">
-  <p>
-    <strong>Name:</strong>
-    <%= listing.name %>
-  </p>
+<div class="row gutters-sm">
+<%= render "layouts/shared/listinguser_card" %>
 
-  <p>
-    <strong>Price:</strong>
-    <%= listing.price %>
-  </p>
+<div class="col-md-8">
+      <div class="card mb-3">
+        <div class="card-body">
+  <div id="<%= dom_id listing %>">
+    <p>
+      <strong>Name:</strong>
+      <%= @listing.name %>
+    </p>
+
+    <p>
+      <strong>Price:</strong>
+      <%= @listing.price %>
+    </p>
 
 
-  <p>
-    <strong>Category:</strong>
-    <%= listing.category %>
-  </p>
-  <p>
-    <strong>Photo:</strong>
-    <% if listing.photo.attached? %>
-        <%= image_tag(listing.photo size: "150" )  %>
-      <% else %>
-         <img alt="image" class="rounded-circle" src="/assets/plants.jpg" width="150" height="150">
-      <% end %>
-  </p>
+    <p>
+      <strong>Category:</strong>
+      <%= @listing.category %>
+    </p>
+    <p>
+      <strong>Photo:</strong>
+      <% if @listing.photo.persisted? %>
+        <%= image_tag(@listing.photo, size: "150")  %>
+      <% elsif @listing.image %>
+        <%= image_tag(@listing.image, size: "150") %>
+        <% else %>
+          <img alt="image" class="rounded-circle" src="/assets/plants.jpg" width="150" height="150">
+        <% end %>
+    </p>
 
-  <p>
-    <strong>Description:</strong>
-    <%= listing.description %>
-  </p>
-
-  
-
+    <p class="text-secondary">
+      <strong >Description:</strong>
+      <%= listing.description.to_plain_text %>
+    </p>
+    <div>
+      <%= link_to "Edit this listing", edit_listing_path(@listing), class: "btn btn-outline-primary" %> |
+      <%= link_to "Back to listings", listings_path, class: "btn btn-outline-primary" %>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
 </div>

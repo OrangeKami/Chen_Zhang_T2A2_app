@@ -1,42 +1,59 @@
-<%= form_with(model: listing) do |form| %>
-  <% if listing.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
+<section class="py-5 text-center container shadow-sm">
+ <div class="row gutters-sm">
+    <%= render "layouts/shared/user_card" %>
 
-      <ul>
-        <% listing.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<div class="col-md-8">
+      <div class="card mb-3">
+        <div class="card-body">
+        <section class="form-auth text-center">
+          <h1 class="h3 mb-3 font-weight-normal">Listing</h1>
+          <%= form_with(model: listing) do |form| %>
+            <% if listing.errors.any? %>
+              <div style="color: red">
+                <h2><%= pluralize(listing.errors.count, "error") %> prohibited this listing from being saved:</h2>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
+                <ul>
+                  <% listing.errors.each do |error| %>
+                    <li><%= error.full_message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
 
-  <div>
-    <%= form.label :price, style: "display: block" %>
-    <%= form.number_field :price %>
-  </div>
+        
+            <%= form.label :name %>
+            <%= form.text_field :name, autofocus: true, class: "form-control", placeholder: "Name..."%>
+            <br>
 
-  
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_field :description %>
-  </div>
+            <%= form.label :price %>
+            <%= form.number_field :price, step: :any, autofocus: true, class: "form-control", placeholder: "Price..." %>
+            <br>
 
-  <div>
-    <%= form.label :photo, style: "display: block" %>
-    <%= form.file_field :photo %>
-  </div>
+            <%# Action Text not working Rails 7 %>
+            <%= form.label :description %>
+            <%= form.text_area :description, autofocus: true, class: "form-control rows", rows: "5", placeholder: "Description..."%>
+            <br>
 
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+            <%= form.label :category %>
+            <%= form.select :category, [ 'Plants', 'Pots', 'Accessories'], :prompt => 'Select One', class: "form-control"%>
+            <br><br>
 
+            <%= form.label :"Photo" %>
+            <%= form.file_field :photo, class: "form-control" %><br>
+
+            <div>
+               <%= form.submit "Update",  class: "btn btn-success text-center" %>
+            </div>
+            <br>
+            <div class="<%= 'd-none' if current_page?(new_listing_path) %>" >
+              <%= button_to "Destroy this listing", @listing, method: :delete, class: "btn btn-danger text-center"  %>
+            </div>
+          <% end %>
+          </div>
+          </div>
+          </section>
+</div>
+</section>
 
 
