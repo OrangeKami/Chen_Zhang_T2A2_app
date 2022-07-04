@@ -1,48 +1,99 @@
 <div class="row gutters-sm">
 <%= render "layouts/shared/listinguser_card" %>
 
-<div class="col-md-8">
-      <div class="card mb-3">
-        <div class="card-body">
-  <div id="<%= dom_id listing %>">
-    <p>
-      <strong>Name:</strong>
-      <%= @listing.name %>
-    </p>
+  <div class="col-md-8">
+    <div class="card mb-3">
+      <div class="card-body">
+        <div id="<%= dom_id listing %>">
+          <p>
+            <strong>Name:</strong>
+            <%= @listing.name %>
+          </p>
+          <p>
+            <strong>Price:</strong>
+            <%= @listing.price %>
+          </p>
+          <p>
+            <strong>Category:</strong>
+            <%= @listing.category %>
+          </p>
+          <p>
+            <strong>Photo:</strong>
+            <% if @listing.photo.persisted? %>
+              <%= image_tag(@listing.photo, size: "150")  %>
+            <% elsif @listing.image %>
+              <%= image_tag(@listing.image, size: "150") %>
+              <% else %>
+                <img alt="image" class="rounded-circle" src="/assets/plants.jpg" width="150" height="150">
+              <% end %>
+          </p>
 
-    <p>
-      <strong>Price:</strong>
-      <%= @listing.price %>
-    </p>
-
-
-    <p>
-      <strong>Category:</strong>
-      <%= @listing.category %>
-    </p>
-    <p>
-      <strong>Photo:</strong>
-      <% if @listing.photo.persisted? %>
-        <%= image_tag(@listing.photo, size: "150")  %>
-      <% elsif @listing.image %>
-        <%= image_tag(@listing.image, size: "150") %>
-        <% else %>
-          <img alt="image" class="rounded-circle" src="/assets/plants.jpg" width="150" height="150">
-        <% end %>
-    </p>
-
-    <p class="text-secondary">
-      <strong >Description:</strong>
-      <%= listing.description.to_plain_text %>
-    </p>
-    <div>
-      <% if @listing.user.id == current_user.id %>
-        <%= link_to "Edit this listing", edit_listing_path(@listing), class: "btn btn-outline-primary" %>
-      <% end %> 
-      <%= link_to "Back to listings", listings_path, class: "btn btn-outline-primary" %>
+          <p class="text-secondary">
+            <strong >Description:</strong>
+            <%= listing.description.to_plain_text %>
+          </p>
+          <div>
+            <% if @listing.user.id == current_user.id %>
+              <%= link_to "Edit this listing", edit_listing_path(@listing), class: "btn btn-outline-primary" %>
+            <% end %> 
+            <%= link_to "Back to listings", listings_path, class: "btn btn-outline-primary" %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-  </div>
-  </div>
-  </div>
+
+
+
+    
+  <table class="table align-middle mb-0 bg-white">
+    <h4 class="text-center">All <Strong style="color: green;"><%= @listing.user.username %></Strong> Listing</h4><br>
+    <thead class="bg-light">
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% current_user.listings.each do |ulisting| %>
+      <tr>
+        <td>
+          <div class="d-flex align-items-center">
+            <% if ulisting.image? %>
+              <%= image_tag(ulisting.image, size: "128") %>
+              <% elsif %>
+              <%= image_tag(ulisting.photo, size: "128")%>
+              <% else  %>
+              <img alt="image"  src="/assets/plants.jpg" >
+              <% end %>
+            <div class="ms-3">
+              <p class="fw-bold mb-1"><%= ulisting.name %></p>  
+            </div>
+          </div>
+        </td>
+        <td>
+          <p class="text-muted mb-0"><%= ulisting.description.to_plain_text.truncate(50) %></p>
+        </td>
+        <td>
+          <span class="rounded-pill d-inline"> 
+            <% if ulisting.category=="Plants" %>
+              <span class="badge badge-success"><%= ulisting.category %></span>
+            <% elsif ulisting.category=="Pots"%>
+              <span class="badge badge-warning"><%= ulisting.category %></span>
+            <% else %>
+              <span class="badge badge-info"><%= ulisting.category %></span>
+            <% end %>
+          </span>
+        </td>
+        <td> <strong><%= number_to_currency(ulisting.price) %></strong> </td>
+        <td>         
+          <%= link_to "Brower", listing_path(ulisting), class: "btn btn-outline-success" %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>   
 </div>

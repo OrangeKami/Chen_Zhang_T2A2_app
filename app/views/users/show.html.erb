@@ -47,12 +47,10 @@
               </span>
             </td>
             <td> <strong><%= number_to_currency(ulisting.price) %></strong> </td>
-            <td>
-             <% if ulisting.user == current_user %>
+            <td>         
                 <%= link_to "Edit", edit_listing_path(ulisting), class: "btn btn-outline-success" %>
-             <% end %> 
         
-              </button>
+            
             </td>
           </tr>
           <% end %>
