@@ -1,9 +1,9 @@
-<% if !current_user.admin %>
+<% if !user_signed_in? || !current_user.admin %>
 <div class="container">
 <%= render "layouts/shared/search"%>
 
 
-<%= link_to "New listing", new_listing_path %>
+
 
 
 <h1 class="text-center">All Listing</h1><br>

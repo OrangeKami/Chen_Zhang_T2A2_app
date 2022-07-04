@@ -11,17 +11,22 @@
         <li><a href="/plants" class="nav-link px-2 link-dark" style="color: rgb(0, 77, 0);">Plants</a></li>
         <li><a href="/pots" class="nav-link px-2 link-dark" style="color: rgb(0, 77, 0);">Pots</a></li>
         <li><a href="/accessories" class="nav-link px-2 link-dark" style="color: rgb(0, 77, 0);">Accessories</a></li>
-      
-        <div class="dropdown text-end pt-1">
+        <li>
+          <% if user_signed_in? %>
+            <%= link_to "Wanna Listing?", new_listing_path, class: "btn btn-outline-success" %>
+          <% end %>
+        </li>
+    
+        <div class="dropdown text-end pt-1 pl-2">
           <a class="d-block link-dark text-decoration-none dropdown-toggle"  data-bs-toggle="dropdown" aria-expanded="false">
             <% if user_signed_in? && current_user.avatar.persisted? %>
               <%= image_tag(current_user.avatar, class: "rounded-circle", size: "35") %> 
               <%= current_user.username %>
-              <%# variant does not work, fix later %>
+              <%# variant does not work, fix later %>   
             <% else %>
               <img alt="image" class="rounded-circle" src="/assets/default_avatar.jpg" width="35" height="35"  >
             <% end %> 
-            
+          
           </a>
           <ul class="dropdown-menu text-small" style="">
             <% if !current_user %>
