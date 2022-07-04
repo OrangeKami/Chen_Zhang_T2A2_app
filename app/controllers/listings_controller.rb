@@ -3,7 +3,8 @@ class ListingsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   # GET /listings or /listings.json
   def index
-    @listings = Listing.all
+    @listings = Listing.all.search(params[:search])
+    # search function not working
   end
 
   # GET /listings/1 or /listings/1.json
@@ -66,6 +67,6 @@ class ListingsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def listing_params
-      params.require(:listing).permit(:name, :price, :photo, :description, :category)
+      params.require(:listing).permit(:name, :price, :photo, :description, :category, :search)
     end
 end

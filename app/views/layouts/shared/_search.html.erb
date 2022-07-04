@@ -1,14 +1,12 @@
+
+
 <div class="d-flex pt-3 pb-4 justify-content-center ">
   <div class="input-style">
-    <%= form_tag listings_path, method: :get do %>
-      <%= text_field_tag :search,
-      params[:search],
-      class: "form-control input-style mt-1",
-      placeholder: "Seach..."
-      %>
+    <%= form_tag(listings_path, method: :get) do %>
+      <%= text_field_tag(:search, params[:search], class: "form-control input-style mt-1",placeholder: "Seach...") %>
       </div>
       <div class="pl-2">
-      <%= submit_tag "Search", class: "mt-1 btn search-btn btn-success" %>
+      <%= submit_tag "Search", class: "mt-1 btn search-btn btn-outline-success" %>
     <% end %>
   </div>
 </div>
