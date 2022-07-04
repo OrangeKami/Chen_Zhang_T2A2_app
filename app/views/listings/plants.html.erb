@@ -1,0 +1,43 @@
+<div class="container">
+  <%= render "layouts/shared/search"%>
+
+
+  <%= link_to "New listing", new_listing_path %>
+
+
+  <h1 class="text-center">All Plants</h1><br>
+  <div class="listingcards listingcards-index">
+    <% Listing.all.each do |listing| %>
+      <% if listing.category == "Plants"%>
+        <%= link_to listing_path(listing.user) do %>
+          <div class="listingcard-trip">
+          <% if listing.image? %>
+            <%= image_tag(listing.image) %>
+          <% elsif listing.photo %>
+            <%= image_tag(listing.photo) %>
+          <% else %>
+              <img alt="image"  src="/assets/plants.jpg" >
+          <% end %>
+            <div class="listingcard-trip-infos">
+              <div class="listingcard-text">
+                <h2 style="color: black;"> <%= listing.name %>  </h2>
+                <% if listing.category=="Plants" %>
+                  <span class="badge badge-success"><%= listing.category %></span>
+                <% elsif listing.category=="Pots"%>
+                  <span class="badge badge-warning"><%= listing.category %></span>
+                <% else %>
+                  <span class="badge badge-info"><%= listing.category %></span>
+                <% end %>
+                <p style="color: rgb(13, 13, 13);"> <%= listing.description.to_plain_text.truncate(150) %> </p>
+                
+              </div>
+              <strong><%= number_to_currency(listing.price) %></strong>
+              
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>

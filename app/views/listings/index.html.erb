@@ -5,7 +5,7 @@
 <%= link_to "New listing", new_listing_path %>
 
 
-
+<h1 class="text-center">All Listing</h1><br>
 <div class="listingcards listingcards-index">
     <% @listings.each do |listing| %>
     <%= link_to listing_path(listing) do %>
