@@ -4,18 +4,12 @@ class Listing < ApplicationRecord
     
     has_rich_text :description
 
-    # def self.search(search)
-    #     if search
-    #         plant = Listing.find_by(name: search)
-    #         if plant
-    #             self.where(name: plant)
-    #         else
-    #            @listing = Listing.all
-    #         end
-    #     else
-    #        @listing = Listing.all
-    #     end
-    # end
+    include PgSearch::Model
+    pg_search_scope :search_by_name_category_price,
+      against: [ :name, :category, :price ]
+    #  tried still not working :cry
+    
+      
 
 
 

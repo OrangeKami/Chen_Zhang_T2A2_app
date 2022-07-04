@@ -10,6 +10,9 @@
 
         <h4><%= current_user.username %></h4><br>
         <article class="media">
+          <%= current_user.email %>
+        </article><br>
+        <article class="media">
             <div class="media-content text-secondary mb-1">Since <strong><%= current_user.created_at.strftime('%b %Y') %></strong></div>   
         </article><br>
           <div class="<%= 'd-none' if current_page?(edit_user_registration_path(current_user)) %>" >

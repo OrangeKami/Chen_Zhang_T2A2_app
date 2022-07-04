@@ -5,6 +5,17 @@ class ListingsController < ApplicationController
   def index
     @listings = Listing.all
     # search function not working
+    if params[:query].present?
+      # sql_query = "title ILIKE :query OR color ILIKE :query OR care_type ILIKE :query"
+      # @listings = Plant.where(sql_query, query: "%#{params[:query]}%")
+      @listings = Listing.search_by_name_category_price(params[:query])
+      if @listings.empty?
+        redirect_back(fallback_location: root_path)
+        flash[:alert] = "Not Found..."
+      end
+    else
+      @listing = Listing.all
+    end   
   end
 
   # GET /listings/1 or /listings/1.json
