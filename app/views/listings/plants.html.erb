@@ -2,14 +2,14 @@
   <%= render "layouts/shared/search"%>
 
 
-  <%= link_to "New listing", new_listing_path %>
-
+ 
 
   <h1 class="text-center">All Plants</h1><br>
   <div class="listingcards listingcards-index">
+  
     <% Listing.all.each do |listing| %>
       <% if listing.category == "Plants"%>
-        <%= link_to listing_path(listing.user) do %>
+        <%= link_to listing_path(listing) do %>
           <div class="listingcard-trip">
           <% if listing.image? %>
             <%= image_tag(listing.image) %>
