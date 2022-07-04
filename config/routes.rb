@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   get '/plants', to: 'listings#plants', as: 'plants'
   get '/pots', to: 'listings#pots', as: 'pots'
   get '/accessories', to: 'listings#accessories', as: 'accessories'
+  
 end

@@ -1,3 +1,4 @@
+<% if !current_user.admin %>
 <div class="container">
 <%= render "layouts/shared/search"%>
 
@@ -8,34 +9,91 @@
 <h1 class="text-center">All Listing</h1><br>
 <div class="listingcards listingcards-index">
     <% @listings.each do |listing| %>
-    <%= link_to listing_path(listing) do %>
-    <div class="listingcard-trip">
-      <% if listing.image? %>
-        <%= image_tag(listing.image) %>
-      <% elsif listing.photo %>
-        <%= image_tag(listing.photo) %>
-      <% else %>
-         <img alt="image"  src="/assets/plants.jpg" >
-      <% end %>
-      <div class="listingcard-trip-infos">
-        <div class="listingcard-text">
-          <h2 style="color: black;"> <%= listing.name %>  </h2>
-          <% if listing.category=="Plants" %>
-            <span class="badge badge-success"><%= listing.category %></span>
-          <% elsif listing.category=="Pots"%>
-            <span class="badge badge-warning"><%= listing.category %></span>
+      <%= link_to listing_path(listing) do %>
+        <div class="listingcard-trip">
+          <% if listing.image? %>
+            <%= image_tag(listing.image) %>
+          <% elsif listing.photo %>
+            <%= image_tag(listing.photo) %>
           <% else %>
-            <span class="badge badge-info"><%= listing.category %></span>
+            <img alt="image"  src="/assets/plants.jpg" >
           <% end %>
-          <p style="color: rgb(13, 13, 13);"> <%= listing.description.to_plain_text.truncate(150) %> </p>
-          
+          <div class="listingcard-trip-infos">
+            <div class="listingcard-text">
+              <h2 style="color: black;"> <%= listing.name %>  </h2>
+              <% if listing.category=="Plants" %>
+                <span class="badge badge-success"><%= listing.category %></span>
+              <% elsif listing.category=="Pots"%>
+                <span class="badge badge-warning"><%= listing.category %></span>
+              <% else %>
+                <span class="badge badge-info"><%= listing.category %></span>
+              <% end %>
+              <p style="color: rgb(13, 13, 13);"> <%= listing.description.to_plain_text.truncate(150) %> </p>
+              
+            </div>
+            <strong><%= number_to_currency(listing.price) %></strong>
+            
+          </div>
         </div>
-        <strong><%= number_to_currency(listing.price) %></strong>
-        
-      </div>
-    </div>
-    <% end %>
+      <% end %>
     <% end %>
   </div>
 
 </div>
+
+<% else %>
+<h1 class="text-center">All Users</h1>
+ <table class="table align-middle mb-0 bg-white">
+    <thead class="bg-light">
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @listings.each do |ulisting| %>
+      <tr>
+        <td>
+          <div class="d-flex align-items-center">
+            <% if ulisting.image? %>
+              <%= image_tag(ulisting.image, size: "128") %>
+              <% elsif %>
+              <%= image_tag(ulisting.photo, size: "128")%>
+              <% else  %>
+              <img alt="image"  src="/assets/plants.jpg" >
+              <% end %>
+            <div class="ms-3">
+              <p class="fw-bold mb-1"><%= ulisting.name %></p>  
+            </div>
+          </div>
+        </td>
+        <td>
+          <p class="text-muted mb-0"><%= ulisting.description.to_plain_text.truncate(50) %></p>
+        </td>
+        <td>
+          <span class="rounded-pill d-inline"> 
+            <% if ulisting.category=="Plants" %>
+              <span class="badge badge-success"><%= ulisting.category %></span>
+            <% elsif ulisting.category=="Pots"%>
+              <span class="badge badge-warning"><%= ulisting.category %></span>
+            <% else %>
+              <span class="badge badge-info"><%= ulisting.category %></span>
+            <% end %>
+          </span>
+        </td>
+        <td> <strong><%= number_to_currency(ulisting.price) %></strong> </td>
+        <td>         
+          <%= link_to "Edit", edit_listing_path(ulisting), class: "btn btn-success" %><br><br>
+          <%= button_to "Delete", @listing, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger text-center"  %>
+          <%# pop up warning not working don' know why %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>   
+</div>
+
+<% end %>

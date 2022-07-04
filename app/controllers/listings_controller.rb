@@ -3,7 +3,7 @@ class ListingsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
   # GET /listings or /listings.json
   def index
-    @listings = Listing.all.search(params[:search])
+    @listings = Listing.all
     # search function not working
   end
 

@@ -42,14 +42,17 @@
             <%= form.label :"Photo" %>
             <%= form.file_field :photo, class: "form-control" %><br>
 
-            <div>
-               <%= form.submit "Update",  class: "btn btn-success text-center" %>
+            <div class="actions">
+               <%= form.submit %>
             </div>
             <br>
-            <div class="<%= 'd-none' if current_page?(new_listing_path) %>" >
-              <%= button_to "Destroy this listing", @listing, method: :delete, class: "btn btn-danger text-center"  %>
-            </div>
+            
+            
           <% end %>
+          <div class="<%= 'd-none' if current_page?(new_listing_path) %>" >
+              <%= button_to "Destroy this listing", @listing, method: :delete, data: { confirm: "Are you sure?" },class: "btn btn-danger text-center"  %>
+            <%# warning not working %>
+          </div>
           </div>
           </div>
           </section>

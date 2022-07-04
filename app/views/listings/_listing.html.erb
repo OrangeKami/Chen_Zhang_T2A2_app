@@ -6,19 +6,22 @@
       <div class="card-body">
         <div id="<%= dom_id listing %>">
           <p>
-            <strong>Name:</strong>
             <%= @listing.name %>
           </p>
           <p>
-            <strong>Price:</strong>
-            <%= @listing.price %>
+            <strong><%= number_to_currency(@listing.price) %></strong>
           </p>
           <p>
-            <strong>Category:</strong>
-            <%= @listing.category %>
+             <% if @listing.category=="Plants" %>
+              <span class="badge badge-success"><%= @listing.category %></span>
+            <% elsif @listing.category=="Pots"%>
+              <span class="badge badge-warning"><%= @listing.category %></span>
+            <% else %>
+              <span class="badge badge-info"><%= @listing.category %></span>
+            <% end %>
           </p>
           <p>
-            <strong>Photo:</strong>
+          
             <% if @listing.photo.persisted? %>
               <%= image_tag(@listing.photo, size: "150")  %>
             <% elsif @listing.image %>
@@ -29,11 +32,11 @@
           </p>
 
           <p class="text-secondary">
-            <strong >Description:</strong>
+            
             <%= listing.description.to_plain_text %>
           </p>
           <div>
-            <% if @listing.user.id == current_user.id %>
+            <% if @listing.user.id == current_user.id || current_user.admin %>
               <%= link_to "Edit this listing", edit_listing_path(@listing), class: "btn btn-outline-primary" %>
             <% end %> 
             <%= link_to "Back to listings", listings_path, class: "btn btn-outline-primary" %>
@@ -58,16 +61,16 @@
       </tr>
     </thead>
     <tbody>
-      <% current_user.listings.each do |ulisting| %>
+      <% @listing.user.listings.each do |ulisting| %>
       <tr>
         <td>
           <div class="d-flex align-items-center">
-            <% if ulisting.image? %>
-              <%= image_tag(ulisting.image, size: "128") %>
-              <% elsif %>
-              <%= image_tag(ulisting.photo, size: "128")%>
+            <% if ulisting.image %>
+              <%= image_tag(ulisting.image, size: "150") %>
+              <% elsif ulisting.photo.persisted? %>
+              <%= image_tag(ulisting.photo, size: "150")%>
               <% else  %>
-              <img alt="image"  src="/assets/plants.jpg" >
+              <img alt="image"  src="/assets/plants.jpg" width="150" height="150">
               <% end %>
             <div class="ms-3">
               <p class="fw-bold mb-1"><%= ulisting.name %></p>  

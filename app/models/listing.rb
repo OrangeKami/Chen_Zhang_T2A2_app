@@ -4,24 +4,24 @@ class Listing < ApplicationRecord
     
     has_rich_text :description
 
-    def self.search(search)
-        if search
-            plant = Listing.find_by(name: search)
-            if plant
-                self.where(name: plant)
-            else
-               @listing = Listing.all
-            end
-        else
-           @listing = Listing.all
-        end
-    end
+    # def self.search(search)
+    #     if search
+    #         plant = Listing.find_by(name: search)
+    #         if plant
+    #             self.where(name: plant)
+    #         else
+    #            @listing = Listing.all
+    #         end
+    #     else
+    #        @listing = Listing.all
+    #     end
+    # end
 
 
 
 
-     validates :name, :description, :price, presence: true
-    validates :price, presence: true, numericality: { greater_than: 0, less_than: 1000000 }
+    validates :name, :description, :price, presence: true
+    
     validates :photo, file_size: { less_than_or_equal_to: 5.megabytes },
               file_content_type: { allow: ['image/jpeg', 'image/png', 'image/gif'] }
     validates :price, :numericality => {:greater_than => 0}, :format => { :with => /\A\d+(?:\.\d{0,2})?\z/ }, length: {maximum: 6}

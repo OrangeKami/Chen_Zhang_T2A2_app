@@ -12,10 +12,10 @@
         <article class="media">
             <div class="media-content text-secondary mb-1">Since <strong><%= @listing.user.created_at.strftime('%b %Y') %></strong></div>   
         </article><br>
-          <% if @listing.user_id != current_user.id%>
-            <button class="btn btn-outline-primary">Message</button><br>
-          <% else %>
+          <% if @listing.user == current_user || current_user.admin %>
             <%= link_to "Edit My Profile", edit_user_registration_path(@user), class: "btn btn-success" %>
+          <% else %>
+            <button class="btn btn-outline-primary">Message</button><br>
           <% end %>
       </div>
     </div>
