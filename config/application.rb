@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module ChenZhangT2a2App
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.0
+  
     config.active_storage.variant_processor = :vips
 
     # Configuration for the application, engines, and railties goes here.
@@ -19,5 +19,8 @@ module ChenZhangT2a2App
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.eager_load = true
+    config.eager_load_paths += %W(#{config.root}/app/lib)
+    
   end
 end

@@ -2,30 +2,43 @@
  <%= link_to 'Show Previous', '?m=all' %>
 <% end %>
 
+<section class="py-5 text-center container shadow-sm">
+ <div class="row gutters-sm">
+    <%= render "layouts/shared/user_card" %>
+  
+    <div class="col-md-8">
+      <div class="card mb-3">
+        <div class="card-body">  
+          <h3 class="subtitle">Message from other users</h3><br>
 
-<h1 class="title"> Message board </h1>
-
-<% @messages.each do |message| %>
-    <% if message.body %>
-        <% user = User.find(message.user_id) %>
-            <div class="message is-dark">
-                <hr>
-                <strong>Message from  <%= user.username %>:</strong>
-                <%= message.body %>
-                 <%= message.message_time %>
-            </div>
-
-    <% end %>
-<% end %>
-
-<%# Form for two models - Conversation and Message, that need to associate with one another  %>
- <%= form_for [@conversation, @message], html: {class: "input-group"} do |f| %>
-    <div class="container">
-        <%= f.text_area :body, class: "textarea", placeholder: "Contact seller about a sticker" %>
-        <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
-        <div class="subtitle">
-          <%= f.submit "Send message", class: "button is-link" %>
-        </div>
-    </div>
-<% end %>
+              <% @messages.each do |message| %>
+                  <% if message.body %>
+                      <% user = User.find(message.user_id) %>
+                          <div class="form-control">
+                            <strong>Message from  <%= user.username %> @ <%= message.message_time %> </strong>
+                              <hr>
+                            <%= message.body %><br>
+                          </div>
+                  <% end %>
+              <% end %>
+              <br>
+              <%# Form for two models - Conversation and Message, that need to associate with one another  %>
+              <%= form_for [@conversation, @message], html: {class: "input-group"} do |f| %>
+                  <div class="container">
+                      <%= f.text_area :body, class: "form-control rows", rows: "5", placeholder: "Contact seller about a listing..." %>
+                      <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+                      <br><br>
+                      <div class="subtitle">
+                        <%= f.submit "Send message", class: "btn btn-success text-center" %>
+                      </div>
+                  </div>
+              <% end %>
  
+
+    
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
