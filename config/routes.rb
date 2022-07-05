@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   get '/pots', to: 'listings#pots', as: 'pots'
   get '/accessories', to: 'listings#accessories', as: 'accessories'
   
+  resources :conversations do
+    resources :messages
+  end
 end

@@ -12,7 +12,7 @@
           <div class="listingcard-trip">
           <% if listing.image? %>
             <%= image_tag(listing.image) %>
-          <% elsif listing.photo %>
+          <% elsif listing.photo.persisted? %>
             <%= image_tag(listing.photo) %>
           <% else %>
               <img alt="image"  src="/assets/plants.jpg" >
