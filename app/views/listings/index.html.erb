@@ -9,7 +9,7 @@
             <% if listing.image? %>
             <%# for db:seed use %>
               <%= image_tag(listing.image) %>
-            <% elsif listing.photo %>
+            <% elsif listing.photo.persisted? %>
             <%# active storage photo has one %>
               <%= image_tag(listing.photo) %>
             <% else %>

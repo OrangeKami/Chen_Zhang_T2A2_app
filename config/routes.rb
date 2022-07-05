@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   match '/users/:id/', to: 'users#destroy', via: 'delete'
   patch 'users/:id', to: 'users#update'
   resources :users
+  
   get '/plants', to: 'listings#plants', as: 'plants'
   get '/pots', to: 'listings#pots', as: 'pots'
   get '/accessories', to: 'listings#accessories', as: 'accessories'
