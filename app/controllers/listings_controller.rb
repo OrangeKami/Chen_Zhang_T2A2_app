@@ -14,7 +14,7 @@ class ListingsController < ApplicationController
         flash[:alert] = "Not Found..."
       end
     else
-      @listing = Listing.all
+      @listings = Listing.all
     end   
   end
 

@@ -22,10 +22,10 @@
               <div class="d-flex align-items-center">
                 <% if ulisting.image? %>
                   <%= image_tag(ulisting.image, size: "128") %>
-                  <% elsif %>
+                  <% elsif ulisting.photo.persisted? %>
                   <%= image_tag(ulisting.photo, size: "128")%>
                   <% else  %>
-                  <h1 class="preview"> No Preview Available </h1>
+                  <img alt="image" class="rounded-circle" src="/assets/plants.jpg" width="150" height="150">
                   <% end %>
                 <div class="ms-3">
                   <p class="fw-bold mb-1"><%= ulisting.name %></p>  
