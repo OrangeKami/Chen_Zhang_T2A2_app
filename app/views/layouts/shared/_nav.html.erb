@@ -38,9 +38,10 @@
                 <p class="dropdown-item" style="font-weight: bold;">(This is Admin)</p>
                 <%= link_to "User Control", users_path, class: "dropdown-item"%>
                 <%= link_to "Listing Control", listings_path, class: "dropdown-item"%>
-                <% else %> 
+                <% else %>  
+                <a class="dropdown-item" href="<%= watchlist_path %>">My Whatchlist</a>
+                
                 <%= link_to "My Profile", current_user, class: "dropdown-item"%>
-                <a class="dropdown-item" href="/">My Whatchlist</a>
               <% end %>
              
               

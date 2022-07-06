@@ -1,3 +1,4 @@
+<section class="container">
 <div class="row gutters-sm">
 <%= render "layouts/shared/listinguser_card" %>
 
@@ -38,10 +39,12 @@
           <div>
             <% if @listing.user.id == current_user.id || current_user.admin %>
               <%= link_to "Edit this listing", edit_listing_path(@listing), class: "btn btn-outline-primary" %>
-              <% else %>
-              <%= link_to "Add to Watchlist", edit_listing_path(@listing), class: "btn btn-outline-success" %>
+            <% elsif @watchlist.include?(listing) %>
+              <%= button_to "Remove from watchlist", remove_from_watchlist_path(listing), method: :delete, class: "btn btn-outline-success" %>
+            <% else %>
+              <%=   button_to "Add to watchlist", add_to_watchlist_path(listing), class: "btn btn-outline-success" %>
             <% end %> 
-            <%= link_to "Back to listings", listings_path, class: "btn btn-outline-primary" %>
+            <br><%= link_to "Back to listings", listings_path, class: "btn btn-outline-primary" %>
           </div>
         </div>
       </div>
@@ -102,3 +105,4 @@
     </tbody>
   </table>   
 </div>
+</section>

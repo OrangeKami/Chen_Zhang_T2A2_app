@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
    }
+
+  post "listings/add_to_watch/:id", to: "listings#add_to_watchlist", as: "add_to_watchlist"
+  delete "listings/remove_from_watch/:id", to: "listings#remove_from_watchlist", as: "remove_from_watchlist"
+  get "/watchlist", to: 'users#watchlist', as: "watchlist"
   root to: 'pages#home'
   match '/users', to: 'users#index', via: 'get'
   match '/users/:id', to: 'users#show', via: 'get'

@@ -43,13 +43,13 @@
             <%= form.file_field :photo, class: "form-control" %><br>
 
             <div class="actions">
-              <%= form.submit %>
+              <%= form.submit "Update",class: "btn btn-outline-success "%>
             </div>
             <br> 
           <% end %>
           
           <div class="<%= 'd-none' if current_page?(new_listing_path) %>" >
-              <%= button_to "Destroy this listing", @listing, method: :delete, data: { confirm: "Are you sure?" },class: "btn btn-danger text-center"  %>
+              <%= button_to "Delete this listing", @listing, method: :delete, data: { confirm: "Are you sure?" },class: "btn btn-outline-danger"  %>
             <%# warning not working %>
           </div>
         </section>

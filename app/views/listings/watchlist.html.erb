@@ -1,0 +1,10 @@
+
+<h1>watchlist</h1>
+          Items:
+          <%= @watchlist.size %>
+          <br>
+          <% @watchlist.each do |watchlist_item| %>
+            <br>
+            <%= watchlist_item.name %>
+            <%= link_to "x", remove_from_watchlist_path(watchlist_item), method: :delete %>
+<% end %>
