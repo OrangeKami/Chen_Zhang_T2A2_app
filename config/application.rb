@@ -11,6 +11,7 @@ module ChenZhangT2a2App
     # Initialize configuration defaults for originally generated Rails version.
   
     config.active_storage.variant_processor = :vips
+    config.require_master_key = true
 
     # Configuration for the application, engines, and railties goes here.
     #

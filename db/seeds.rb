@@ -5,8 +5,11 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-Listing.destroy_all
-User.destroy_all
+ActiveRecord::Base.connection.disable_referential_integrity do
+  ApplicationRecord.descendants.each do |model|
+    model.delete_all
+  end
+end
 
 user = User.new(username: "Test", email: "test@test.com", password: "123456")
 user.save!
@@ -42,3 +45,19 @@ listing.save!
 
 listing = Listing.new(name: "Chinese Money Plant",  user: user1,  description: "Pilea peperomioides grows best in a shady spot (or winter windowsill) with weekly watering. You can replant the offshoots that sprout from the base of the stem and give them as gifts.", price: 20, category: "Plants", image: "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1603654819-il_794xN.2440665192_1z8d.jpg?crop=1xw:1.00xh;center,top&resize=768:*")
 listing.save!
+
+listing = Listing.new(name: "Alisa Plant Pot",  user: user,  description: "The Alisa concrete Plant Pot by Urban Products features a modern stripe design in a range of colours, creating an earthy vibe. This indoor pot is a perfect companion for succulents and cactus.", price: 12, category: "Pots", image: "https://cdn.shopify.com/s/files/1/0574/8736/0174/products/alisa-plant-pot-11cmmyjunglehome-657855_200x200_crop_center.jpg?v=1630707441")
+listing.save!
+
+listing = Listing.new(name: "Atlas Egg Plant Pot ",  user: user,  description: "The Atlas Egg Plant Pot range by Northcote Pottery is an ever classic design that will suit any space. Finished in a gorgeous matte terrazzo, they come in three colours (Black, White & Pink). They are lightweight making them suitable for both indoor and outdoor use.", price: 35, category: "Pots", image: "https://cdn.shopify.com/s/files/1/0574/8736/0174/products/atlas-egg-plant-pot-large-28cm-my-jungle-home-749426_200x200_crop_center.jpg?v=1634298173")
+listing.save!
+
+listing = Listing.new(name: "Cement Plant Pot",  user: user1,  description: "This Cement plant pot is a beautifully textured design that will compliment any plant and any space indoors or out. A round planter with curved sides down to a flat base, this smooth sided planter will add interest and texture to your design.", price: 47, category: "Pots", image: "https://cdn.shopify.com/s/files/1/0574/8736/0174/products/cement-plant-pot-24cm-my-jungle-home-379775_200x200_crop_center.jpg?v=1634298173")
+listing.save!
+
+listing = Listing.new(name: "Haws 'The Bartley Burbler' - Sage Watering Can",  user: user,  description: "Give your plants a drink using this traditional style watering can. It's light and perfect for watering indoor plant as well as seedlings. Great as a gift for child and adult gardeners alike.", price: 23, category: "Accessories", image: "https://cdn.shopify.com/s/files/1/0269/5689/0193/products/H100-2-SAG_TheBartleyBurblerSageTwoPint_1024x1024@2x.jpg?v=1654079508")
+listing.save!
+
+listing = Listing.new(name: "Dr. Houseplant - Plant Book",  user: user1,  description: "Dr. Houseplant: An indispensable guide to keeping your indoor plants healthy and happy", price: 33, category: "Accessories", image: "https://cdn.shopify.com/s/files/1/0269/5689/0193/products/drhouseplant_1024x1024@2x.jpg?v=1654079408")
+listing.save!
+
