@@ -1,4 +1,3 @@
-
 <div class="row gutters-sm">
 <%= render "layouts/shared/listinguser_card" %>
 
@@ -42,7 +41,7 @@
 
 
 
-    
+  <div class="table-responsive"> 
   <table class="table align-middle mb-0 bg-white">
     <h4 class="text-center">All <Strong style="color: green;"><%= @listing.user.username %></Strong> Listing</h4><br>
     <thead class="bg-light">
@@ -92,5 +91,6 @@
       </tr>
       <% end %>
     </tbody>
-  </table>   
+  </table>
+  </div>   
 </div>
