@@ -1,8 +1,9 @@
-<section class="py-5 text-center container shadow">
+<section class="py-5 text-center container">
   <div class="row gutters-sm">
   <%= render "layouts/shared/user_card" %>    
     <div class="col-md-8">    
-      <div class="card mb-3">             
+      
+       <div class="card-body">              
         <table class="table">
         <br><h4 class="text-center">My Watchlist(item: <%= @watchlist.size %>) </h4><br>
         <thead class="bg-light">
@@ -54,7 +55,8 @@
           <% end %>
         </tbody>
         </table>          
-      </div>
+       </div> 
+      
     </div>
   </div>
 </section>
