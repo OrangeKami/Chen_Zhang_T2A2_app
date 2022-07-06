@@ -1,9 +1,60 @@
-<h1>watchlist</h1>
-          Items:
-          <%= @watchlist.size %>
-          <br>
-          <% @watchlist.each do |watchlist_item| %>
-            <br>
-            <%= watchlist_item.name %>
-            <%= link_to "x", remove_from_watchlist_path(watchlist_item), method: :delete %>
-        <% end %>
+<section class="py-5 text-center container shadow">
+  <div class="row gutters-sm">
+  <%= render "layouts/shared/user_card" %>    
+    <div class="col-md-8">    
+      <div class="card mb-3">             
+        <table class="table">
+        <br><h4 class="text-center">My Watchlist(item: <%= @watchlist.size %>) </h4><br>
+        <thead class="bg-light">
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @watchlist.each do |watchlist_item| %>                        
+          <tr>
+            <td>
+              <div class="d-flex align-items-center">
+                <% if watchlist_item.image? %>
+                  <%= image_tag(watchlist_item.image, size: "128") %>
+                  <% elsif watchlist_item.photo.persisted? %>
+                  <%= image_tag(watchlist_item.photo, size: "128")%>
+                  <% else  %>
+                  <img alt="image" class="rounded-circle" src="/assets/plants.jpg" width="150" height="150">
+                  <% end %>
+                <div class="ms-3">
+                  <p class="fw-bold mb-1"><%= watchlist_item.name %></p>  
+                </div>
+              </div>
+            </td>
+            <td>
+              <p class="text-muted mb-0"><%= watchlist_item.description.to_plain_text.truncate(50) %></p>
+            </td>
+            <td>
+              <span class="rounded-pill d-inline"> 
+                <% if watchlist_item.category=="Plants" %>
+                  <span class="badge badge-success"><%= watchlist_item.category %></span>
+                <% elsif watchlist_item.category=="Pots"%>
+                  <span class="badge badge-warning"><%= watchlist_item.category %></span>
+                <% else %>
+                  <span class="badge badge-info"><%= watchlist_item.category %></span>
+                <% end %>
+              </span>
+            </td>
+            <td> <strong><%= number_to_currency(watchlist_item.price) %></strong> </td>
+            <td>         
+              <%= link_to "Remove", remove_from_watchlist_path(watchlist_item), method: :delete, class: "btn btn-outline-warning" %><br><br>
+              <%= link_to "Details", listing_path(watchlist_item), class: "btn btn-outline-success" %>        
+            </td>
+            </tr>
+          <% end %>
+        </tbody>
+        </table>          
+      </div>
+    </div>
+  </div>
+</section>

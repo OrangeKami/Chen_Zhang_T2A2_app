@@ -1,11 +1,11 @@
-<section class="py-5 text-center container shadow" style="width: 90%;">
+<section class="py-5 text-center container shadow">
   <div class="row gutters-sm"> 
-   <%= render "layouts/shared/user_card" %>
-   
-  
-    <div class="col-md-8">   
-      <table class="table align-middle mb-0 bg-white">
-        <h4 class="text-center">My Listings</h4><br>
+  <%= render "layouts/shared/user_card" %>
+    
+    <div class="col-md-8">  
+      <div class="card mb-3">        
+        <table class="table">
+        <br><h4 class="text-center">My Listings</h4><br>
         <thead class="bg-light">
           <tr>
             <th>Name</th>
@@ -16,7 +16,7 @@
           </tr>
         </thead>
         <tbody>
-          <% current_user.listings.each do |ulisting| %>
+        <% current_user.listings.each do |ulisting| %>
           <tr>
             <td>
               <div class="d-flex align-items-center">
@@ -48,16 +48,13 @@
             </td>
             <td> <strong><%= number_to_currency(ulisting.price) %></strong> </td>
             <td>         
-                <%= link_to "Edit", edit_listing_path(ulisting), class: "btn btn-outline-success" %>
-        
-            
+            <%= link_to "Edit", edit_listing_path(ulisting), class: "btn btn-outline-success" %>            
             </td>
           </tr>
-          <% end %>
+        <% end %>
         </tbody>
-      </table>   
+        </table>     
+      </div>  
     </div>
-  </div>
-  
-
+  </div>  
 </section>
