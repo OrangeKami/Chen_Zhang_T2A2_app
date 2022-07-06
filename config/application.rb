@@ -12,7 +12,8 @@ module ChenZhangT2a2App
   
     config.active_storage.variant_processor = :vips
     config.require_master_key = true
-
+    config.serve_static_assets = true
+    config.assets.initialize_on_precompile = false
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
