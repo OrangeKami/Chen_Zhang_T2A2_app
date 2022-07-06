@@ -47,7 +47,7 @@
             </td>
             <td> <strong><%= number_to_currency(watchlist_item.price) %></strong> </td>
             <td>         
-              <%= link_to "Remove", remove_from_watchlist_path(watchlist_item), method: :delete, class: "btn btn-outline-warning" %><br><br>
+              <%= button_to "Remove", remove_from_watchlist_path(watchlist_item), method: :delete, class: "btn btn-outline-warning" %><br>
               <%= link_to "Details", listing_path(watchlist_item), class: "btn btn-outline-success" %>        
             </td>
             </tr>
