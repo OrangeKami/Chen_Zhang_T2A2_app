@@ -16,41 +16,13 @@
           </tr>
         </thead>
         <tbody>
-        <% current_user.listings.each do |ulisting| %>
-          <tr>
-            <td>
-              <div class="d-flex align-items-center">
-                <% if ulisting.image? %>
-                  <%= image_tag(ulisting.image, size: "128") %>
-                  <% elsif ulisting.photo.persisted? %>
-                  <%= image_tag(ulisting.photo, size: "128")%>
-                  <% else  %>
-                  <img alt="image" class="rounded-circle" src="/assets/plants.jpg" width="150" height="150">
-                  <% end %>
-                <div class="ms-3">
-                  <p class="fw-bold mb-1"><%= ulisting.name %></p>  
-                </div>
-              </div>
-            </td>
-            <td>
-              <p class="text-muted mb-0"><%= ulisting.description.to_plain_text.truncate(50) %></p>
-            </td>
-            <td>
-              <span class="rounded-pill d-inline"> 
-                <% if ulisting.category=="Plants" %>
-                  <span class="badge badge-success"><%= ulisting.category %></span>
-                <% elsif ulisting.category=="Pots"%>
-                  <span class="badge badge-warning"><%= ulisting.category %></span>
-                <% else %>
-                  <span class="badge badge-info"><%= ulisting.category %></span>
-                <% end %>
-              </span>
-            </td>
-            <td> <strong><%= number_to_currency(ulisting.price) %></strong> </td>
-            <td>         
-            <%= link_to "Edit", edit_listing_path(ulisting), class: "btn btn-outline-success" %>            
-            </td>
-          </tr>
+        <% current_user.listings.each do |listing| %>
+        <tr>
+         <%= render partial: "/layouts/shared/table", locals: { listing: listing } %>
+        <td>  
+          <%= link_to "Edit", edit_listing_path(listing), class: "btn btn-outline-success" %>      
+        </td>
+        </tr>
         <% end %>
         </tbody>
         </table>            

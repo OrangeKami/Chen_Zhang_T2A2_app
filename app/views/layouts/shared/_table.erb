@@ -1,0 +1,30 @@
+<td>
+    <div class="d-flex align-items-center">
+    <% if listing.image %>
+        <%= image_tag(listing.image, size: "150") %>
+        <% elsif listing.photo.persisted? %>
+        <%= image_tag(listing.photo, size: "150")%>
+        <% else  %>
+        <img alt="image"  src="/assets/plants.jpg" width="150" height="150">
+        <% end %>
+    <div class="ms-3">
+        <p class="fw-bold mb-1"><%= listing.name %></p>  
+    </div>
+    </div>
+</td>
+<td>
+    <p class="text-muted mb-0"><%= listing.description.to_plain_text.truncate(50) %></p>
+</td>
+<td>
+    <span class="rounded-pill d-inline"> 
+    <% if listing.category=="Plants" %>
+        <span class="badge badge-success"><%= listing.category %></span>
+    <% elsif listing.category=="Pots"%>
+        <span class="badge badge-warning"><%= listing.category %></span>
+    <% else %>
+        <span class="badge badge-info"><%= listing.category %></span>
+    <% end %>
+    </span>
+</td>
+<td> <strong><%= number_to_currency(listing.price) %></strong> </td>
+

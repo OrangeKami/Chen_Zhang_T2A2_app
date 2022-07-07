@@ -5,34 +5,7 @@
   <div class="listingcards listingcards-index">
       <% @listings.each do |listing| %>
         <%= link_to listing_path(listing) do %>
-          <div class="listingcard-trip">
-            <% if listing.image? %>
-            <%# for db:seed use %>
-              <%= image_tag(listing.image) %>
-            <% elsif listing.photo.persisted? %>
-            <%# active storage photo has one %>
-              <%= image_tag(listing.photo) %>
-            <% else %>
-            <%# img alt %>
-              <img alt="image"  src="/assets/plants.jpg" >
-            <% end %>
-            <div class="listingcard-trip-infos">
-              <div class="listingcard-text">
-                <h2 style="color: black;"> <%= listing.name %>  </h2>
-                <% if listing.category=="Plants" %>
-                  <span class="badge badge-success"><%= listing.category %></span>
-                <% elsif listing.category=="Pots"%>
-                  <span class="badge badge-warning"><%= listing.category %></span>
-                <% else %>
-                  <span class="badge badge-info"><%= listing.category %></span>
-                <% end %>
-                <p style="color: rgb(13, 13, 13);"> <%= listing.description.to_plain_text.truncate(150) %> </p>
-                
-              </div>
-              <strong><%= number_to_currency(listing.price) %></strong>
-              
-            </div>
-          </div>
+         <%= render partial: "/listings/shared/card", locals: { listing: listing } %>
         <% end %>
       <% end %>
     </div>
@@ -52,40 +25,12 @@
         </tr>
       </thead>
       <tbody>
-        <% @listings.each do |ulisting| %>
+        <% @listings.each do |listing| %>
         <tr>
-          <td>
-            <div class="d-flex align-items-center">
-              <% if ulisting.image? %>
-                <%= image_tag(ulisting.image, size: "150") %>
-                <% elsif ulisting.photo.persisted? %>
-                <%= image_tag(ulisting.photo, size: "150")%>
-                <% else  %>
-                <img alt="image"  src="/assets/plants.jpg" width="150" height="150" >
-                <% end %>
-              <div class="ms-3">
-                <p class="fw-bold mb-1"><%= ulisting.name %></p>  
-              </div>
-            </div>
-          </td>
-          <td>
-            <p class="text-muted mb-0"><%= ulisting.description.to_plain_text.truncate(50) %></p>
-          </td>
-          <td>
-            <span class="rounded-pill d-inline"> 
-              <% if ulisting.category=="Plants" %>
-                <span class="badge badge-success"><%= ulisting.category %></span>
-              <% elsif ulisting.category=="Pots"%>
-                <span class="badge badge-warning"><%= ulisting.category %></span>
-              <% else %>
-                <span class="badge badge-info"><%= ulisting.category %></span>
-              <% end %>
-            </span>
-          </td>
-          <td> <strong><%= number_to_currency(ulisting.price) %></strong> </td>
+          <%# partial idea for table %>
+          <%= render partial: "/layouts/shared/table", locals: { listing: listing } %>
           <td>         
-            <%= link_to "Edit", edit_listing_path(ulisting), class: "btn btn-success" %><br><br>
-            
+            <%= link_to "Edit", edit_listing_path(listing), class: "btn btn-success" %><br><br>            
             <%# pop up warning not working don' know why %>
             <%= button_to "Delete", @listing, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger text-center" %>
           </td>

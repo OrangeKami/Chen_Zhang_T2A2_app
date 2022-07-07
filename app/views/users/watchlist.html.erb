@@ -16,42 +16,14 @@
           </tr>
         </thead>
         <tbody>
-        <% @watchlist.each do |watchlist_item| %>                        
+        <% @watchlist.each do |listing| %>                        
           <tr>
-            <td>
-              <div class="d-flex align-items-center">
-                <% if watchlist_item.image? %>
-                  <%= image_tag(watchlist_item.image, size: "128") %>
-                  <% elsif watchlist_item.photo.persisted? %>
-                  <%= image_tag(watchlist_item.photo, size: "128")%>
-                  <% else  %>
-                  <img alt="image" class="rounded-circle" src="/assets/plants.jpg" width="150" height="150">
-                  <% end %>
-                <div class="ms-3">
-                  <p class="fw-bold mb-1"><%= watchlist_item.name %></p>  
-                </div>
-              </div>
-            </td>
-            <td>
-              <p class="text-muted mb-0"><%= watchlist_item.description.to_plain_text.truncate(50) %></p>
-            </td>
-            <td>
-              <span class="rounded-pill d-inline"> 
-                <% if watchlist_item.category=="Plants" %>
-                  <span class="badge badge-success"><%= watchlist_item.category %></span>
-                <% elsif watchlist_item.category=="Pots"%>
-                  <span class="badge badge-warning"><%= watchlist_item.category %></span>
-                <% else %>
-                  <span class="badge badge-info"><%= watchlist_item.category %></span>
-                <% end %>
-              </span>
-            </td>
-            <td> <strong><%= number_to_currency(watchlist_item.price) %></strong> </td>
+            <%= render partial: "/layouts/shared/table", locals: { listing: listing } %>
             <td>         
-              <%= button_to "Remove", remove_from_watchlist_path(watchlist_item), method: :delete, class: "btn btn-outline-warning" %><br>
-              <%= link_to "Details", listing_path(watchlist_item), class: "btn btn-outline-success" %>        
+              <%= button_to "Remove", remove_from_watchlist_path(listing), method: :delete, class: "btn btn-outline-warning" %><br>
+              <%= link_to "Details", listing_path(listing), class: "btn btn-outline-success" %>        
             </td>
-            </tr>
+          </tr>
           <% end %>
         </tbody>
         </table>          
