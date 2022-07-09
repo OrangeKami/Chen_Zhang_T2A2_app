@@ -2,7 +2,7 @@
   <div class="container">
   <%= render "layouts/shared/search"%>
   <h1 class="text-center">All Listing</h1><br>
-  <div class="listingcards listingcards-index">
+    <div class="listingcards listingcards-index">
       <% @listings.each do |listing| %>
         <%= link_to listing_path(listing) do %>
          <%= render partial: "/listings/shared/card", locals: { listing: listing } %>

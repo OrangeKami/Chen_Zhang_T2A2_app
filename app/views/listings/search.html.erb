@@ -1,0 +1,11 @@
+<div class="container">
+  <%= render "layouts/shared/search"%>
+  <h1 class="text-center">Search Results for <%= @parameter %></h1><br>
+  <div class="listingcards listingcards-index">
+    <% @results.each do |listing| %>
+      <%= link_to listing_path(listing) do %>
+      <%= render partial: "/listings/shared/card", locals: { listing: listing } %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

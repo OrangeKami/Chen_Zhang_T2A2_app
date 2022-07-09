@@ -69,6 +69,16 @@ class ListingsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  # simply database search
+  def search
+    if params[:search].blank?
+      redirect_to listings_path and return
+    else 
+      # downcase to make sure letter is no sensitive
+      @parameter = params[:search].downcase
+      @results = Listing.all.where("lower(name) LIKE :search", search: "%#{@parameter}%")
+    end
+  end
 
    def add_to_watchlist
     id = params[:id].to_i
