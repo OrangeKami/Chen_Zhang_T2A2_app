@@ -11,11 +11,8 @@
         <li><a href="/plants" class="nav-link px-2 link-dark" style="color: rgb(0, 77, 0);">Plants</a></li>
         <li><a href="/pots" class="nav-link px-2 link-dark" style="color: rgb(0, 77, 0);">Pots</a></li>
         <li><a href="/accessories" class="nav-link px-2 link-dark" style="color: rgb(0, 77, 0);">Accessories</a></li>
-        <li>
-          <% if user_signed_in? %>
-            <%= link_to "Wanna Listing?", new_listing_path, class: "btn btn-outline-success" %>
-            <%= current_user.username %>
-          <% end %>
+        <li>         
+          <%= link_to "Wanna Listing?", new_listing_path, class: "btn btn-outline-success" %>       
         </li>
     
         <div class="dropdown text-end pt-1 pl-2">
@@ -40,7 +37,7 @@
                 <%= link_to "Listing Control", listings_path, class: "dropdown-item"%>
                 <% else %>  
                 <a class="dropdown-item" href="<%= watchlist_path %>">My Whatchlist</a>
-                
+                <%= link_to "My Message", conversations_path(sender_id: current_user.id, recipient_id: current_user.id), method: "get", class: 'dropdown-item' %>
                 <%= link_to "My Profile", current_user, class: "dropdown-item"%>
               <% end %>
              

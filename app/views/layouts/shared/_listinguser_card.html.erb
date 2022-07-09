@@ -18,7 +18,7 @@
           <% if @listing.user == current_user || current_user.admin %>
             <%= link_to "Edit My Profile", edit_user_registration_path(@user), class: "btn btn-success" %>
             <br>
-            <%= button_to "My Message", conversations_path(sender_id: current_user.id, recipient_id: @listing.user.id), method: "post", class: 'btn btn-outline-success' %>
+            <%= button_to "My Message", conversations_path(sender_id: current_user.id, recipient_id: @listing.user.id), method: "get", class: 'btn btn-outline-success' %>
           <% else %>
             <%= button_to "Messages", conversations_path(sender_id: current_user.id, recipient_id: @listing.user.id), method: "post", class: 'btn btn-success' %>
           <% end %>

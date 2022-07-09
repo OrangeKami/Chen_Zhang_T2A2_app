@@ -26,7 +26,7 @@
           <% if @listing.user.id == current_user.id || current_user.admin %>
             <%= link_to "Edit this listing", edit_listing_path(@listing), class: "btn btn-outline-primary" %><br>
           <% elsif @watchlist.include?(@listing) %>
-            <%= button_to "Remove from watchlist", remove_from_watchlist_path(listing), method: :delete, class: "btn btn-outline-success" %>
+            <%= button_to "Remove from watchlist", remove_from_watchlist_path(@listing), method: :delete, class: "btn btn-outline-success" %>
           <% else %>
             <%=   button_to "Add to watchlist", add_to_watchlist_path(@listing), class: "btn btn-outline-success" %>
           <% end %> 

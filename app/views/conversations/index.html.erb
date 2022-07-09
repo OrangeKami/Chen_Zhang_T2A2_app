@@ -1,57 +1,37 @@
-<div class="container">
-  <h1 class="title">Messages</h1>
-</div>
-
-
-
-
-
-<div class="container">
-<h3 class="subtitle">Conversations</h3>
-    <% @conversations.each do |conversation| %>
-    <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
-        <% if conversation.sender.id == current_user.id %>
-            <% recipient = User.find(conversation.recipient_id) %>
-        <% else %>
-            <% recipient = User.find(conversation.sender_id) %>
-        <% end %>
-        <% unless current_user.id == recipient %>
-            <div class="columns"> 
-                <div class="column">
-                    <%= link_to recipient.username, conversation_messages_path(conversation) %>
-                </div>
-            </div>
-            <% end %>
-    <% end %>
-<% end %>
-</div>
-
-<section class="py-5 text-center container shadow-sm">
- <div class="row gutters-sm">
-    <%= render "layouts/shared/user_card" %>
-  
-    <div class="col-md-8">
-      <div class="card mb-3">
-        <div class="card-body">  
-          <h3 class="subtitle">Message from other users</h3><br>
-          
+<section class="py-5 text-center container">
+  <div class="row gutters-sm"> 
+  <%= render "layouts/shared/user_card" %> 
+    <div class="col-md-8">  
+      <div class="card-body">         
+        <div class="table-reponsive">         
+        <table class="table table align-middle mb-0 bg-white">
+          <h4 class="text-center">My conversations</h4><br>
+          <thead class="bg-light">
+            <tr>
+              <th>Name</th>  
+              <th>Email</th>
+              <th>Action
+            </tr>
+          </thead>
+          <tbody>
           <% @conversations.each do |conversation| %>
-            <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>              
-              <% unless current_user.id == recipient %>               
-                  <div class="column">
-                    <%= link_to recipient.username, conversation_messages_path(conversation) %><br>
-                  </div>    
-              <% end %>
-              <% if conversation.sender.id == current_user.id %>
-                <% recipient = User.find(conversation.recipient_id) %><br>
+            <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+            <% if conversation.sender.id == current_user.id %>
+                <% recipient = User.find(conversation.recipient_id) %>
               <% else %>
-                <% recipient = User.find(conversation.sender_id) %><br>
-              <% end %>
+                <% recipient = User.find(conversation.sender_id) %>
+              <% end %>           
+              <tr>
+              <td><%= recipient.username  %></td>
+              <td><%= recipient.email %></td>
+              <td>  <%= link_to "My Messages", conversation_messages_path(conversation), class: "btn btn-outline-info" %> </td>              
+              </tr>       
             <% end %>
           <% end %>
-
+          </tbody>
+        </table>            
         </div>
-      </div>
-    </div>
-  </div>
+      </div>    
+    </div>   
+  </div>  
 </section>
