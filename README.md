@@ -1,24 +1,9 @@
-# README
+# Live Version
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[Botanic Market](https://bontanicmarket.fly.dev)
 
-Things you may want to cover:
+<https://bontanicmarket.fly.dev/>
 
-* Ruby version
+User: test@test.com   Password: 123456
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Admin: admin@test.com  Password: 123456
